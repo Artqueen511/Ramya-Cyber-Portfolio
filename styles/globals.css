@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html, body {
+  height: 100%;
+  background: #0a0f1e;
+}
+
+/* Glassmorphism panel */
+.glass {
+  background: rgba(20, 26, 46, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+/* Neon glow */
+.neon {
+  text-shadow: 0 0 10px rgba(0,240,255,0.8), 0 0 20px rgba(0,240,255,0.4);
+}
+
+/* Glitch effect */
+.glitch {
+  position: relative;
+  animation: glitch 2.5s infinite;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.glitch::before {
+  text-shadow: -2px 0 #00f0ff;
+  clip-path: polygon(0 2%, 100% 2%, 100% 33%, 0 33%);
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+.glitch::after {
+  text-shadow: 2px 0 #00ff9f;
+  clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
+  animation: glitchBot 1.5s infinite linear alternate-reverse;
+}
+@keyframes glitch {
+  2%, 64% { transform: translate(2px,0) skew(0deg); }
+  4%, 60% { transform: translate(-2px,0) skew(0deg); }
+  62% { transform: translate(0,0) skew(5deg); }
+}
+@keyframes glitchTop {
+  0% { transform: translate(0); }
+  50% { transform: translate(-2px, -1px); }
+  100% { transform: translate(0); }
+}
+@keyframes glitchBot {
+  0% { transform: translate(0); }
+  50% { transform: translate(2px, 1px); }
+  100% { transform: translate(0); }
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff9f, #00f0ff);
+  box-shadow: 0 0 8px rgba(0,240,255,0.9);
+  z-index: 9999;
+}

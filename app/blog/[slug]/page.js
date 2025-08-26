@@ -1,0 +1,4 @@
+import { posts } from "../../../data/blog";
+function md(s){return s.replace(/^### (.*$)/gim,'<h3>$1</h3>').replace(/^## (.*$)/gim,'<h2>$1</h2>').replace(/^# (.*$)/gim,'<h1>$1</h1>').replace(/\*\*(.*)\*\*/gim,'<b>$1</b>').replace(/\*(.*)\*/gim,'<i>$1</i>').replace(/`{3}[\s\S]*?`{3}/gim,(m)=>'<pre><code>'+m.slice(3,-3)+'</code></pre>').replace(/`([^`]+)`/gim,'<code>$1</code>').replace(/^- (.*$)/gim,'<li>$1</li>').replace(/\n\n/g,'<br/><br/>');}
+export async function generateStaticParams(){return posts.map(p=>({slug:p.slug}));}
+export default function BlogPost({params}){const post=posts.find(p=>p.slug===params.slug);if(!post)return <div className="p-6 pt-28">Not found</div>;return (<article className="mx-auto max-w-3xl p-6 pt-28"><h1 className="text-3xl font-bold neon">{post.title}</h1><div className="text-xs text-cyan-200/60">{post.date}</div><div className="prose prose-invert mt-6" dangerouslySetInnerHTML={{__html:md(post.content)}}/></article>);}
