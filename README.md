@@ -1,4 +1,4 @@
-# Ramya Arumugam — Cybersecurity Portfolio (Advanced README)
+# Ramya Arumugam — Cybersecurity Portfolio (README)
 
 **Last updated:** 2025-08-26 08:06 UTC
 
