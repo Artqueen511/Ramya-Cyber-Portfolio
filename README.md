@@ -242,3 +242,4 @@ If you want, tell me which hosting platform you prefer (Vercel/Netlify/Heroku) a
 
 ---
 © 2025 Ramya Arumugam — generated portfolio scaffold# Ramya-Cyber-Portfolio
+# Ramya-Cyber-Portfolio
